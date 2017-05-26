@@ -187,6 +187,7 @@ static char *_avl_pre(avl_node_t *root, char *buf) {
 		asprintf(&buf, "%s%ld ", buf, root->key);
 		if(root->left) buf = _avl_pre(root->left, buf);
 		if(root->right) buf = _avl_pre(root->right, buf);
+		free(buf);
 	}
 
 	return buf;
@@ -211,6 +212,7 @@ static char *_avl_post(avl_node_t *root, char *buf) {
 		if(root->left) buf = _avl_post(root->left, buf);
 		if(root->right) buf = _avl_post(root->right, buf);
 		asprintf(&buf, "%s%ld ", buf, root->key);
+		free(buf);
 	}
 
 	return buf;
